@@ -1,6 +1,6 @@
 <template>
-  <a-menu mode="inline" :default-selected-keys="[selectedKey]" :default-open-keys="[openKey]">
-    <!-- <template v-for="menu in menus">
+    <template v-for="menu in menus">
+      <!-- 含有下级children 为目录-->
       <template v-if="menu.children">
         <a-sub-menu :key="menu.key">
           <template #title>
@@ -9,45 +9,33 @@
               <span style="margin-left: 10px;">{{menu.title}}</span>
             </span>
           </template>
-          <div v-for="subMenu in menu.children">
-            <a-menu-item :key="subMenu.key">
-              <router-link :to="subMenu.path">
-                <icon-font :type="menu.icon" />
-                <span>{{ subMenu.title }}</span>
-              </router-link>
-            </a-menu-item>
-          </div>
+          <MenuSubItem :menus="menu.children"></MenuSubItem>
         </a-sub-menu>
       </template>
+      <!-- 没有下级children 为菜单-->
       <template v-else>
         <a-menu-item :key="menu.key">
-          <router-link :to="menu.path">
+          <router-link :to="menu.path" tag="span">
             <icon-font :type="menu.icon" />
             <span>{{ menu.title }}</span>
           </router-link>
         </a-menu-item>
       </template>
-    </template> -->
-    <MenuSubItem :menus="menus"></MenuSubItem>
-  </a-menu>
+    </template>
 </template>
-
 <script setup lang="ts">
 import MenuSubItem from './MenuItem.vue'
 import {MenuItem} from '@/types/index'
+import { createFromIconfontCN } from '@ant-design/icons-vue'
+// 创建 IconFont 组件
+const IconFont = createFromIconfontCN({ 
+  scriptUrl:'//at.alicdn.com/t/c/font_4033022_a1udwwu360o.js' // iconfont图标库地址【目前使用的在线地址,后续使用本地静态文件】
+})
 const props = defineProps({
-  openKey: {
-    type: String,
-    required: true
-  },
-  selectedKey: {
-    type: String,
-    required: true
-  },
   menus: {
     type: Array as () => MenuItem[],
     required: true
   }
 })
-let {menus,selectedKey,openKey} = toRefs(props)
+let {menus} = toRefs(props)
 </script>

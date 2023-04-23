@@ -1,0 +1,39 @@
+export const routeList = [{
+  title:"首页",
+  name:"Index",
+  path:"/index",
+  key:'1',
+  icon:"icon-shouye-zhihui"
+},{
+  title:"销项管理",
+  name:"siws",
+  path:"/siws",
+  icon:"icon-caidan",
+  key:'2',
+  children:[{
+    title:"单据新增",
+    name:"DocumentAdd",
+    path:"/siws/documentAdd",
+    key:'3',
+    icon:"icon-caidan",
+    children:[{
+      title:"单据录入",
+      name:"DucumentEnter",
+      path:"/siws/documentAdd/ducumentEnter",
+      icon:"icon-caidan",
+      key:'4',
+    },{
+      title:"单据导入",
+      name:"DucumentExport",
+      path:"/siws/documentAdd/ducumentExport",
+      icon:"icon-caidan",
+      key:'6',
+    },{
+      title:"明细导入",
+      name:"DetailExport",
+      path:"/siws/documentAdd/detailExport",
+      icon:"icon-caidan",
+      key:'7',
+    }]
+  }]
+}]

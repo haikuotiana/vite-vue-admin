@@ -17,7 +17,8 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
    2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
 2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
 
-
+``
+<div>
 "compilerOptions": {
   "incremental": true, // TS编译器在第一次编译之后会生成一个存储编译信息的文件，第二次编译会在第一次的基础上进行增量编译，可以提高编译的速度
   "tsBuildInfoFile": "./buildFile", // 增量编译文件的存储位置
@@ -69,3 +70,5 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
   "listEmittedFiles": true, // 打印输出文件
   "listFiles": true// 打印编译的文件(包括引用的声明文件)
 }
+</div>
+``

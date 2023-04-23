@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [
     vue(),
     AutoImport({
-      imports: ['vue','vue-router'], //自动引入模块
+      imports: ['vue','vue-router','pinia'], //自动引入模块
       dts: 'src/auto-import.d.ts'
     }),
     Components({
