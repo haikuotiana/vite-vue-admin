@@ -5,7 +5,7 @@ export const routeList = [{
   key:'1',
   icon:"icon-shouye-zhihui"
 },{
-  title:"销项管理",
+  title:"系统管理",
   name:"sims",
   path:"/sims",
   icon:"icon-caidan",

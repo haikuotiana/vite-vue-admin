@@ -23,7 +23,6 @@
 // import type { TableProps } from 'ant-design-vue';
 import { usePagination } from 'vue-request';
 import useAppStore from '@/store/modules/app'
-// import axios from 'axios';
 import http from '@/utils/request'
 type APIParams = {
   results: number;
@@ -105,10 +104,14 @@ const handleTableChange = (
     ...filters,
   });
 };
+const onResize = ()=>{
+  defaultHeight.value = dxTableWrap.value.clientHeight;
+}
 // 切换查询form展开/收起 动态计算表格高度
 const searchH = computed(() => defaultHeight.value - useAppStore().searchH-20);
 onMounted(()=>{
   defaultHeight.value = dxTableWrap.value.clientHeight;
+  window.addEventListener("resize", onResize);
 })
 </script>
 <style scoped>
