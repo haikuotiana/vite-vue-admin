@@ -24,6 +24,7 @@
     "unplugin-auto-import": "^0.15.3",
     "unplugin-vue-components": "^0.24.1",
     "vite": "^4.3.0",
+    "vue-request": "^1.2.4",
     "vue-tsc": "^1.2.0"
   }
 }

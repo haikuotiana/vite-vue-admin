@@ -13,11 +13,23 @@ export const routes = [{
     component: () => import(/* webpackChunkName: "Index" */'@/views/index/index.vue'),
   }]
 },{
-  path: '/menu1',
+  path: '/sims',
   component: Layout,
   children:[{
-    path: '/menu1/sub-menu1',
-    name: 'SubMenu1',
-    component: () => import(/* webpackChunkName: "SubMenu1" */'@/views/menu1/index.vue'),
+    path: '/sims/documentAdd',
+    name: 'DocumentAdd',
+    children: [{
+      path: '/sims/documentAdd/ducumentEnter',
+      name: 'DucumentEnter',
+      component: () => import(/* webpackChunkName: "ducumentEnter" */'@/views/sims/documentAdd/ducumentEnter.vue'),
+    },{
+      path: '/sims/documentAdd/ducumentExport',
+      name: 'DucumentExport',
+      component: () => import(/* webpackChunkName: "ducumentExport" */'@/views/sims/documentAdd/ducumentExport.vue'),
+    },{
+      path: '/sims/documentAdd/detailExport',
+      name: 'DetailExport',
+      component: () => import(/* webpackChunkName: "detailExport" */'@/views/sims/documentAdd/detailExport.vue'),
+    }]
   }]
 }]

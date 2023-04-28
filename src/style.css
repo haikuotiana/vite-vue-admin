@@ -68,3 +68,12 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.ant-advanced-search-form .ant-form-item{
+  margin-bottom: 10px !important;
+}
+.ant-advanced-search-form{
+  border-bottom: 1px dashed #ccc;
+  padding-bottom: 10px !important;
+  box-sizing: border-box !important;
+}
