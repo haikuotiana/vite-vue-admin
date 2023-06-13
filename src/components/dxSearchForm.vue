@@ -7,12 +7,12 @@
       :model="formState"
       @finish="onFinish"
     >
-      <a-row :gutter="24">
-        <a-col :span="20">
+      <a-row :gutter="24" style="flex-wrap:nowrap;">
+        <a-col style="flex: 1;">
           <a-row :gutter="24">
             <template v-for="(item,i) in formModel" :key="i">
               <a-col v-show="expand || i <= 3" :span="6">
-                <a-form-item :name="item.name" :label="item.label">
+                <a-form-item :name="item.name" :label="item.label" :rules="item.rules">
                   <a-input v-if="item.type=='input'" v-model:value="formState[item.name]" :placeholder="item.placeholder||'请输入'+item.label" allow-clear></a-input>
                   <a-select v-if="item.type=='select'" v-model:value="formState[item.name]" :mode="item.mode" :placeholder="item.placeholder||'请选择'+item.label">
                     <a-select-option v-for="(o,i) in item.options" :value="o.value" :key="i">{{o.label}}</a-select-option>
@@ -23,12 +23,14 @@
             </template>
           </a-row>
         </a-col>
-        <a-col :span="4">
+        <a-col>
           <a-row>
             <a-col :span="24" style="text-align: right">
-              <a-button type="primary" html-type="submit">查询</a-button>
-              <a-button style="margin: 0 8px" @click="() => formRef?.resetFields()">清空</a-button>
-              <a style="font-size: 12px" @click="expand = !expand;changeVisible()">
+              <slot name="customFormBtn">
+                <a-button type="primary" html-type="submit">查询</a-button>
+                <!-- <a-button style="margin: 0 5px" @click="() => formRef?.resetFields()">清空</a-button> -->
+              </slot>
+              <a style="font-size: 12px" @click="expand = !expand;changeVisible()" v-if="formModel.length>4">
                 <template v-if="expand">
                   <UpOutlined />
                 </template>
@@ -50,6 +52,7 @@
   import {SearchItem} from '@/types/index'
   import locale from 'ant-design-vue/es/date-picker/locale/zh_CN';
   import useAppStore from '@/store/modules/app'
+  import http from '@/utils/request'
   let props = defineProps({
     formModel: {
       type: Array as () => SearchItem[],
@@ -78,6 +81,30 @@
       useAppStore().toggleSarch(h)
     })  
   }
+  const queryOptions = (item:any)=>{
+    http.get(item.optionsUrl,{}).then(res=>{
+      console.log(res.data.results)
+      item.options = res.data.results.map((a:any)=>{
+        return {
+          label:a.gender,
+          value:a.cell
+        }
+      })
+    });
+  }
+  const formSelectOption = ()=>{
+    formModel.value.map((item:any)=>{
+      if(item.type=='select'&&!item.options){
+        queryOptions(item);
+      }
+    })
+  } 
+  onMounted(()=>{
+    formSelectOption();
+    let h = searchBox.value.clientHeight;
+    console.log('默认当前查询区域高度',h)
+    useAppStore().toggleSarch(h)
+  })
 </script>
 <style>
 #components-form-demo-advanced-search .ant-form {
@@ -101,5 +128,8 @@
 [data-theme='dark'] #components-form-demo-advanced-search .search-result-list {
   border: 1px dashed #434343;
   background: rgba(255, 255, 255, 0.04);
+}
+.search-calss .ant-btn{
+  margin: 0px 5px;
 }
 </style>

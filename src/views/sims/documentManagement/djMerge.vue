@@ -7,7 +7,7 @@
 <script lang="ts" setup>
   import dxSearchForm from '@/components/dxSearchForm.vue';
   import dxTable from '@/components/dxTable.vue';
-  import {formOtion,columns} from './optionSetting/detailExportOption'
+  import {formOtion,columns} from './optionSetting/djMerge'
   import {defaultParams} from '@/utils/common.ts'
   import { createVNode } from 'vue';
   import { ExclamationCircleOutlined } from '@ant-design/icons-vue';

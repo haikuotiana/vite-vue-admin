@@ -10,6 +10,10 @@ export interface optionsType {
   value:string,
   label:string,
 }
+export interface rulesOption {
+  required:boolean,
+  message?:string,
+}
 export interface SearchItem {
   type:string,
   name:string,
@@ -19,6 +23,8 @@ export interface SearchItem {
   options?:optionsType[],
   mode?:string,
   valueType?:string,
-  defaultValue?:string //多选 逗号分隔字符串 单选默认字符串
+  defaultValue?:string, //多选 逗号分隔字符串 单选默认字符串
+  optionsUrl?:string,
+  rules?:Array<rulesOption>
 }
 

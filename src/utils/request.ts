@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-
+import { message } from 'ant-design-vue';
 // 定义接口返回数据的结构
 interface ResponseData {
   code: number;
@@ -10,6 +10,7 @@ interface ResponseData {
 // 定义请求配置的接口，继承 AxiosRequestConfig 接口
 interface RequestConfig extends AxiosRequestConfig {
   showError?: boolean; // 是否显示错误信息，默认为 true
+  ContentType?:string;
 }
 
 class HttpRequest {
@@ -20,9 +21,9 @@ class HttpRequest {
     this.axiosInstance = axios.create({
       baseURL: 'https://randomuser.me',//接口统一api
       timeout: 1000*60*10,//默认10分钟
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      // headers: {
+      //   'Content-Type': 'application/json',
+      // },
     });
 
     // 添加请求拦截器，在请求发送之前进行一些处理，比如加入 token 等
@@ -43,6 +44,8 @@ class HttpRequest {
       return response;
     }, (error) => {
       // 处理响应错误
+      console.log('接口异常',error)
+      message.error(`接口异常【${error.message}】`);
       return Promise.reject(error);
     });
   }

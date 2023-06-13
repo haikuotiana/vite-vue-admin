@@ -1,13 +1,13 @@
 <template>
   <div class="page-wrap">
     <dxSearchForm :formModel="formOtion" :defaultForm="queryForm" @submit="submitForm"></dxSearchForm>
-    <dxTable :queryForm="queryForm" :columns="columns" :requestApi="requestApi" @onCheck="checkFn" @onDel="delFn" @onEdit="editFn"></dxTable>
+    <dxTable :batchBtn="batchBtn" :queryForm="queryForm" :columns="columns" :requestApi="requestApi" @onCheck="checkFn" @onDel="delFn" @onEdit="editFn" @optionCallback="checkOptionCallback"></dxTable>
   </div>
 </template>
 <script lang="ts" setup>
   import dxSearchForm from '@/components/dxSearchForm.vue';
   import dxTable from '@/components/dxTable.vue';
-  import {formOtion,columns} from './optionSetting/detailExportOption'
+  import {formOtion,columns,batchBtn} from './optionSetting/djEdit'
   import {defaultParams} from '@/utils/common.ts'
   import { createVNode } from 'vue';
   import { ExclamationCircleOutlined } from '@ant-design/icons-vue';
@@ -46,6 +46,9 @@
   }
   const editFn = (data:any)=>{
     console.log('编辑数据',data)
+  }
+  const checkOptionCallback = (data:any) =>{
+    console.log('批量操作方法接口返回',data)
   }
 </script>
 <style>

@@ -5,7 +5,7 @@ export const routeList = [{
   key:'1',
   icon:"icon-shouye-zhihui"
 },{
-  title:"系统管理",
+  title:"销项系统",
   name:"sims",
   path:"/sims",
   icon:"icon-caidan",
@@ -34,6 +34,31 @@ export const routeList = [{
       path:"/sims/documentAdd/detailExport",
       icon:"icon-caidan",
       key:'7',
+    }]
+  },{
+    title:"单据管理",
+    name:"DocumentManagement",
+    path:"/sims/documentManagement",
+    key:'8',
+    icon:"icon-caidan",
+    children:[{
+      title:"单据修改",
+      name:"DjEdit",
+      path:"/sims/documentManagement/djEdit",
+      icon:"icon-caidan",
+      key:'9',
+    },{
+      title:"单据合并",
+      name:"DjMerge",
+      path:"/sims/documentManagement/djMerge",
+      icon:"icon-caidan",
+      key:'10',
+    },{
+      title:"单据拆分",
+      name:"DjSplit",
+      path:"/sims/documentManagement/djSplit",
+      icon:"icon-caidan",
+      key:'11',
     }]
   }]
 }]

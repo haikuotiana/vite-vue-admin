@@ -1,0 +1,79 @@
+export const radioOption = reactive([{
+  name:'发票类型',
+  key:"invoiceType",
+  option:[{
+    value:"1",
+    label:"专用发票",
+  },{
+    value:"2",
+    label:"普通发票"
+  },{
+    value:"3",
+    label:"电子发票"
+  },{
+    value:"4",
+    label:"卷式发票"
+  }]
+},{
+  name:'特殊票种',
+  key:"tspz",
+  option:[{
+    value:"1",
+    label:"否",
+  },{
+    value:"2",
+    label:"农产品收购"
+  },{
+    value:"3",
+    label:"成品油"
+  },{
+    value:"4",
+    label:"机动车"
+  }]
+},{
+  name:'金额价税方式',
+  key:"jejsfs",
+  option:[{
+    value:"1",
+    label:"含税",
+  },{
+    value:"2",
+    label:"不含税"
+  }]
+},{
+  name:'超限额自动拆分',
+  key:"zdcf",
+  option:[{
+    value:"1",
+    label:"是",
+  },{
+    value:"2",
+    label:"否"
+  }]
+},{
+  name:'重新计算单价或数量',
+  key:"cxjs",
+  option:[{
+    value:"1",
+    label:"不重新计算",
+  },{
+    value:"2",
+    label:"重新计算数量"
+  },{
+    value:"3",
+    label:"重新计算单价"
+  }]
+},{
+  name:'是否匹配远得客户信息',
+  key:"kfxx",
+  option:[{
+    value:"1",
+    label:"正常导入",
+  },{
+    value:"2",
+    label:"以客户代码匹配"
+  },{
+    value:"3",
+    label:"以客户名称匹配"
+  }]
+}])
